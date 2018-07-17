@@ -30,14 +30,16 @@ class B2B(MpesaBase):
           "Amount": amount
           "PartyA": party_a  # Sender shortcode
           "PartyB": party_b  # Receiver shortcode
-          "Remarks": remarks
+          "Remarks": remarks  # Comments that are sent along with the transaction(maximum 100 characters)
           "AccountReference": account_reference # Use if doing paybill to banks etc.
-          "QueueTimeOutURL": queue_timeout_url  # The path that receives results from M-Pesa.
-          "ResultURL": result_url # The path that stores information of time out transactions.
+          "QueueTimeOutURL": queue_timeout_url  # The url that handles information of timed out transactions.
+          "ResultURL": result_url # The url that receives results from M-Pesa api call.
 
         :return:
         {
-
+            "OriginatorConverstionID": The unique request ID for tracking a transaction
+            "ConversationID": The unique request ID returned by mpesa for each request made
+            "ResponseDescription": Response Description message
         }
         """
 

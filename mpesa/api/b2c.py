@@ -12,20 +12,22 @@ class B2C(MpesaBase):
                  queue_timeout_url=None, result_url=None, occassion=None):
         """
         payload = {
-            "InitiatorName": initiator_name,
-            "SecurityCredential": security_credential,
+            "InitiatorName": initiator_name, #The name of the initiator initiating the request
+            "SecurityCredential": security_credential, # Generate from developer portal
             "CommandID": command_id,
             "Amount": amount,
-            "PartyA": party_a,
-            "PartyB": party_b,
-            "Remarks": remarks,
-            "QueueTimeOutURL": queue_timeout_url,
-            "ResultURL": result_url,
+            "PartyA": party_a, # Organization/MSISDN making the transaction - Shortcode (6 digits) - MSISDN (12 digits)
+            "PartyB": party_b, # MSISDN receiving the transaction (12 digits)
+            "Remarks": remarks, # Comments that are sent along with the transaction(maximum 100 characters)
+            "QueueTimeOutURL": queue_timeout_url, # The url that handles information of timed out transactions.
+            "ResultURL": result_url, # The url that receives results from M-Pesa api call.
             "Occassion": occassion
 
         :return:
         {
-
+            "OriginatorConverstionID": The unique request ID for tracking a transaction
+            "ConversationID": The unique request ID returned by mpesa for each request made
+            "ResponseDescription": Response Description message
         }
         """
 

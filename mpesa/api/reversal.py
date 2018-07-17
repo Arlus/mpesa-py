@@ -8,28 +8,28 @@ class Reversal(MpesaBase):
         self.authentication_token = self.authenticate()
         print(self.authentication_token)
 
-    def reverse(self, initiator=None, security_credential=None, command_id=None, transaction_id=None,
+    def reverse(self, initiator=None, security_credential=None, command_id="TransactionReversal", transaction_id=None,
                  amount=None, receiver_party=None, receiver_identifier_type=None, queue_timeout_url=None,
                 result_url=None, remarks=None, occassion=None):
         """
         payload = {
-            "Initiator": initiator,
-            "SecurityCredential": security_credential,
-            "CommandID": command_id,
-            "TransactionID": transaction_id,
+            "Initiator": initiator, # This is the credential/username used to authenticate the transaction request
+            "SecurityCredential": security_credential, # Encrypted Credential of user getting transaction amount
+            "CommandID": TransactionReversal,
+            "TransactionID": transaction_id, # Unique identifier to identify a transaction on M-Pesa
             "Amount": amount,
-            "ReceiverParty": receiver_party,
-            "ReceiverIdentifierType": receiver_identifier_type,
-            "QueueTimeOutURL": queue_timeout_url,
-            "ResultURL": result_url,
-            "Remarks": remarks,
+            "ReceiverParty": receiver_party, # Organization receiving the transaction - shortcode
+            "ReceiverIdentifierType": 11, # Organization Identifier on M-Pesa
+            "QueueTimeOutURL": queue_timeout_url, # The url that stores information of timed out transactions
+            "ResultURL": result_url, # The url that handles information from the mpesa API call
+            "Remarks": remarks,  # Comments that are sent along with the transaction(maximum 100 characters)
             "Occassion": occassion
         }
         :return:
         {
-            OriginatorConverstionID
-            ConversationID
-            ResponseDescription
+            "OriginatorConverstionID": ,
+            "ConversationID": ,
+            "ResponseDescription: ,
         }
         """
 

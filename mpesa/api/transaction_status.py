@@ -18,14 +18,14 @@ class TransactionStatus(MpesaBase):
         SAFARICOM PAYLOAD:
         {
           "CommandID": "TransactionStatusQuery",
-          "PartyA": , # MSISDN or shortcode
-          "IdentifierType": , 1-MSISDN. 2-Till Number, 3-Shortcode
-          "Remarks": "",
-          "Initiator": ,
-          "SecurityCredential": "",
-          "QueueTimeOutURL": encoded,
-          "ResultURL": time,
-          "TransactionID": checkout_request_id,
+          "PartyA": , # Organization/MSISDN receiving the transaction - MSISDN or shortcode
+          "IdentifierType": , # Type of organization receiving the transaction 1-MSISDN. 2-Till Number, 3-Shortcode
+          "Remarks": "", # Comments that are sent along with the transaction(maximum 100 characters)
+          "Initiator": , # This is the credential/username used to authenticate the transaction request
+          "SecurityCredential": "", # Encrypted password for the initiator to authenticate the transaction request
+          "QueueTimeOutURL": queue_timeout_url, # The url that stores information of timed out transactions
+          "ResultURL": result_url,  # The url that handles information from the mpesa API call
+          "TransactionID": transaction_id, # Unique identifier to identify a transaction on M-Pesa
           "Occasion": ""
         }
         RESPONSE:

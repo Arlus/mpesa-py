@@ -9,6 +9,7 @@ class MpesaBase:
         self.app_secret = app_secret
         self.sandbox_url = sandbox_url
         self.live_url = live_url
+        self.token = None
 
     def authenticate(self):
         if self.env == "production":

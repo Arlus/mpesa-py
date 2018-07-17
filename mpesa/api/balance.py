@@ -12,20 +12,20 @@ class Balance(MpesaBase):
                     remarks=None, queue_timeout_url=None,result_url=None):
         """
         payload = {
-          "Initiator": initiator,
-          "SecurityCredential": security_credential,
-          "CommandID": command_id,
-          "PartyA": party_a
-          "IdentifierType": identifier_type,
-          "Remarks": remarks
-          "QueueTimeOutURL": queue_timeout_url
-          "ResultURL": result_url
+          "Initiator": initiator, # The name of Initiator to initiating  the request
+          "SecurityCredential": security_credential, # Generate from developer portal
+          "CommandID": command_id, # AccountBalance
+          "PartyA": party_a # Till number being queried
+          "IdentifierType": identifier_type, # Type of organization receiving the transaction :Numeric	1 - MSISDN 2 - Till Number  4 - Organization short code
+          "Remarks": remarks  # Comments that are sent along with the transaction(maximum 100 characters)
+          "QueueTimeOutURL": queue_timeout_url # The url that handles information of timed out transactions.
+          "ResultURL": result_url  # The url that receives results from M-Pesa api call.
 
         :return:
         {
-            OriginatorConverstionID
-            ConversationID
-            ResponseDescription
+            "OriginatorConverstionID": ,
+            "ConversationID": ,
+            "ResponseDescription: ,
         }
         """
 

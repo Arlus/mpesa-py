@@ -13,14 +13,16 @@ class C2B(MpesaBase):
     def register(self, shortcode=None, response_type=None, confirmation_url=None, validation_url=None):
         """
         payload = {
-          "ShortCode": 174379,
-          "ResponseType": response_type,
-          "ConfirmationURL": confirmation_url,
-          "ValidationURL": validation_url
+          "ShortCode": 174379, # The short code of the organization.
+          "ResponseType": response_type, # Default response type for timeout. Incase a tranaction times out, Mpesa will by default Complete or Cancel the transaction
+          "ConfirmationURL": confirmation_url, # Confirmation URL for the client
+          "ValidationURL": validation_url # Validation URL for the client
 
         :return:
         {
-
+            "OriginatorConverstionID": ,
+            "ConversationID": ,
+            "ResponseDescription: ,
         }
         """
 
@@ -42,15 +44,17 @@ class C2B(MpesaBase):
     def simulate(self, shortcode=None, command_id=None, amount=None, msisdn=None, bill_ref_number=None):
         """
         payload = {
-          "ShortCode": 174379,
-          "CommandID": encoded,
-          "Amount": time,
-          "Msisdn": "CustomerPayBillOnline",
-          "BillRefNumber": 10
+          "ShortCode": 174379, # Short Code receiving the amount being transacted
+          "CommandID": command_id, # Unique command for each transaction type. - CustomerPayBillOnline - CustomerBuyGoodsOnline
+          "Amount": amount, # The amount being transacted
+          "Msisdn": 254XXXXXXXXX, # Phone number (msisdn) initiating the transaction MSISDN(12 digits)
+          "BillRefNumber": Bill Reference Number, # Optional
         }
         :return:
         {
-
+            "OriginatorConverstionID": ,
+            "ConversationID": ,
+            "ResponseDescription: ,
         }
         """
 

@@ -14,17 +14,17 @@ class MpesaExpress(MpesaBase):
                  phone_number=None, description=None):
         """
         payload = {
-          "BusinessShortCode": 174379,
-          "Password": encoded,
-          "Timestamp": time,
-          "TransactionType": "CustomerPayBillOnline",
+          "BusinessShortCode": 174379,  # This is organizations shortcode (Paybill or Buygoods - A 5 to 6 digit account number) used to identify an organization and receive the transaction.
+          "Password": encoded,  # base64.encode(Shortcode+Passkey+Timestamp)
+          "Timestamp": time,  # Time of the transaction (YYYYMMDDHHmmss)
+          "TransactionType": "CustomerPayBillOnline", # Type of the transaction - CustomerPayBillOnline - CustomerBuyGoodsOnline
           "Amount": 10,
-          "PartyA": 254701783003,
-          "PartyB": 174379,
-          "PhoneNumber": 254701783003,
-          "CallBackURL": "https://1c55722e.ngrok.io/callback",
+          "PartyA": 254701783003, # The phone number sending money. The parameter expected is a Valid Safaricom Mobile Number that is M-Pesa registered in the format 2547XXXXXXXX
+          "PartyB": 174379, # The organization receiving the funds.
+          "PhoneNumber": 254701783003, # The Mobile Number to receive the STK Pin Prompt. This number can be the same as PartyA value above.
+          "CallBackURL": "https://my.url/callback", # A CallBack URL is a valid secure URL that is used to receive notifications from M-Pesa API.
           "AccountReference": "13dbd6hg",
-          "TransactionDesc": "Just a trial"
+          "TransactionDesc": "Just a trial" # This is any additional information/comment that can be sent along with the request from your system. MAX 13 characters
         }
         :return:
         {
@@ -64,10 +64,10 @@ class MpesaExpress(MpesaBase):
     def query(self, business_shortcode=None, checkout_request_id=None, passcode=None):
         """
         payload = {
-                "BusinessShortCode": " " ,
-                "Password": " ",
-                "Timestamp": " ",
-                "CheckoutRequestID": " "
+                "BusinessShortCode":  , # This is organizations shortcode (Paybill or Buygoods - A 5 to 6 digit account number) used to identify an organization and receive the transaction.
+                "Password": ,  # base64.encode(Shortcode+Passkey+Timestamp)
+                "Timestamp": ,  # Time of the transaction (YYYYMMDDHHmmss)
+                "CheckoutRequestID": , # This is a global unique identifier of the processed checkout transaction request.
         }
         :return:
         {
