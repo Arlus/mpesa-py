@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('../mpesa/'))
 
 # -- Project information -----------------------------------------------------
 
-project = u'mpesa-py'
+project = u'python-mpesa'
 copyright = u'2018, Aurlus Ismael Wedava'
 author = u'Aurlus Ismael Wedava'
 
@@ -131,7 +131,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'python-mpesa.tex', u'mpesa-py Documentation',
+    (master_doc, 'python-mpesa.tex', u'python-mpesa Documentation',
      u'Aurlus Ismael Wedava', 'manual'),
 ]
 
@@ -152,8 +152,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'mpesa-py', u'mpesa-py Documentation',
-     author, 'mpesa-py', 'One line description of project.',
+    (master_doc, 'python-mpesa', u'python-mpesa Documentation',
+     author, 'python-mpesa', 'One line description of project.',
      'Miscellaneous'),
 ]
 

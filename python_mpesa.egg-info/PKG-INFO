@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: python-mpesa
+Version: 0.0.1
+Summary: A Python wrapper for Mpesa Daraja APIs.
+Home-page: https://github.com/Arlus/python-mpesa
+Author: Aurlus Ismael Wedava
+Author-email: arlusishmael@gmail.com
+License: UNKNOWN
+Description: This library provides thin wrappers around Mpesa Daraja APIs. The APIs supported are Reversal, Transaction Status, Account Balance, B2B, B2C, C2B and MPESA Express
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent

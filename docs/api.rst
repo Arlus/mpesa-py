@@ -67,3 +67,12 @@ api.transaction\_status module
     :members:
     :undoc-members:
     :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: api
+    :members:
+    :undoc-members:
+    :show-inheritance:

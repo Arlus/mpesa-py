@@ -1,4 +1,4 @@
-# python-mpesa
+# mpesa-py
 
   
 This is an unofficial wrapper providing convenient access to the Safaricom MPESA Daraja API for applications written in Python.  
@@ -9,13 +9,13 @@ It has been tested with Python 2 & 3
 
 To install the library from Pypi:
 ``` bash
- pip install python-mpesa 
+ pip install mpesa-py 
  ```
 
 
 To get the latest version of the library.
 ```bash
-pip install git+git://github.com/Arlus/python-mpesa.git#egg=python-mpesa
+pip install git+git://github.com/Arlus/mpesa-py.git#egg=mpesa-py
 ```
 
 You can also clone or download the library package and install it using setuptools:
