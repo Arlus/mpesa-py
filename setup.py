@@ -18,7 +18,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ),
     install_requires=[
-        'certifi==2018.4.16', 'chardet==3.0.4', 'future==0.16.0', 'idna==2.7', 'requests==2.19.0',
+        'certifi', 'chardet==3.0.4', 'future==0.16.0', 'idna==2.7', 'requests==2.19.0',
         'six==1.11.0', 'urllib3==1.23', 'pytest==3.6.1 '
     ],
 )
