@@ -8,32 +8,28 @@ class MpesaExpress(MpesaBase):
     def __init__(self, env="sandbox", app_key=None, app_secret=None, sandbox_url=None, live_url=None):
         MpesaBase.__init__(self, env, app_key, app_secret, sandbox_url, live_url)
         self.authentication_token = self.authenticate()
-        print(self.authentication_token)
 
     def stk_push(self, business_shortcode=None, passcode=None, amount=None, callback_url=None, reference_code=None,
                  phone_number=None, description=None):
-        """
-        payload = {
-          "BusinessShortCode": 174379,  # This is organizations shortcode (Paybill or Buygoods - A 5 to 6 digit account number) used to identify an organization and receive the transaction.
-          "Password": encoded,  # base64.encode(Shortcode+Passkey+Timestamp)
-          "Timestamp": time,  # Time of the transaction (YYYYMMDDHHmmss)
-          "TransactionType": "CustomerPayBillOnline", # Type of the transaction - CustomerPayBillOnline - CustomerBuyGoodsOnline
-          "Amount": 10,
-          "PartyA": 254701783003, # The phone number sending money. The parameter expected is a Valid Safaricom Mobile Number that is M-Pesa registered in the format 2547XXXXXXXX
-          "PartyB": 174379, # The organization receiving the funds.
-          "PhoneNumber": 254701783003, # The Mobile Number to receive the STK Pin Prompt. This number can be the same as PartyA value above.
-          "CallBackURL": "https://my.url/callback", # A CallBack URL is a valid secure URL that is used to receive notifications from M-Pesa API.
-          "AccountReference": "13dbd6hg",
-          "TransactionDesc": "Just a trial" # This is any additional information/comment that can be sent along with the request from your system. MAX 13 characters
-        }
-        :return:
-        {
-            u'CustomerMessage': u'Success. Request accepted for processing',
-            u'CheckoutRequestID': u'ws_CO_17102017141428735',
-            u'ResponseDescription': u'Success. Request accepted for processing',
-            u'MerchantRequestID': u'29127-1024378-1',
-            u'ResponseCode': u'0'
-        }
+        """This method uses Mpesa's Express API to initiate online payment on behalf of a customer..
+
+                                                    **Args:**
+                                                        - business_shortcode (int): The short code of the organization.
+                                                        - passcode (str): Get from developer portal
+                                                        - amount (int): The amount being transacted
+                                                        - callback_url (str): A CallBack URL is a valid secure URL that is used to receive notifications from M-Pesa API.
+                                                        - reference_code: Account Reference: This is an Alpha-Numeric parameter that is defined by your system as an Identifier of the transaction for CustomerPayBillOnline transaction type.
+                                                        - phone_number: The Mobile Number to receive the STK Pin Prompt.
+                                                        - description: This is any additional information/comment that can be sent along with the request from your system. MAX 13 characters
+
+
+                                                    **Returns:**
+                                                        - CustomerMessage (str):
+                                                        - CheckoutRequestID (str):
+                                                        - ResponseDescription (str):
+                                                        - MerchantRequestID (str):
+                                                        - ResponseCode (str):
+
         """
 
         time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")
@@ -62,22 +58,22 @@ class MpesaExpress(MpesaBase):
         return r.json()
 
     def query(self, business_shortcode=None, checkout_request_id=None, passcode=None):
-        """
-        payload = {
-                "BusinessShortCode":  , # This is organizations shortcode (Paybill or Buygoods - A 5 to 6 digit account number) used to identify an organization and receive the transaction.
-                "Password": ,  # base64.encode(Shortcode+Passkey+Timestamp)
-                "Timestamp": ,  # Time of the transaction (YYYYMMDDHHmmss)
-                "CheckoutRequestID": , # This is a global unique identifier of the processed checkout transaction request.
-        }
-        :return:
-        {
-            u'MerchantRequestID': u'Success. Request accepted for processing',
-            u'CheckoutRequestID': u'ws_CO_17102017141428735',
-            u'ResponseCode': u'Success. Request accepted for processing',
-            u'ResultDesc': u'29127-1024378-1',
-            u'ResponseDescription': u'0',
-            u'ResultCode': u'0'
-        }
+        """This method uses Mpesa's Express API to check the status of a Lipa Na M-Pesa Online Payment..
+
+                                                    **Args:**
+                                                        - business_shortcode (int): This is organizations shortcode (Paybill or Buygoods - A 5 to 6 digit account number) used to identify an organization and receive the transaction.
+                                                        - checkout_request_id (str): This is a global unique identifier of the processed checkout transaction request.
+                                                        - passcode (str): Get from developer portal
+
+
+                                                    **Returns:**
+                                                        - CustomerMessage (str):
+                                                        - CheckoutRequestID (str):
+                                                        - ResponseDescription (str):
+                                                        - MerchantRequestID (str):
+                                                        - ResponseCode (str):
+
+
         """
 
         time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")

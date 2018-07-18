@@ -6,31 +6,32 @@ class Reversal(MpesaBase):
     def __init__(self, env="sandbox", app_key=None, app_secret=None, sandbox_url=None, live_url=None):
         MpesaBase.__init__(self, env, app_key, app_secret, sandbox_url, live_url)
         self.authentication_token = self.authenticate()
-        print(self.authentication_token)
 
     def reverse(self, initiator=None, security_credential=None, command_id="TransactionReversal", transaction_id=None,
                  amount=None, receiver_party=None, receiver_identifier_type=None, queue_timeout_url=None,
                 result_url=None, remarks=None, occassion=None):
-        """
-        payload = {
-            "Initiator": initiator, # This is the credential/username used to authenticate the transaction request
-            "SecurityCredential": security_credential, # Encrypted Credential of user getting transaction amount
-            "CommandID": TransactionReversal,
-            "TransactionID": transaction_id, # Unique identifier to identify a transaction on M-Pesa
-            "Amount": amount,
-            "ReceiverParty": receiver_party, # Organization receiving the transaction - shortcode
-            "ReceiverIdentifierType": 11, # Organization Identifier on M-Pesa
-            "QueueTimeOutURL": queue_timeout_url, # The url that stores information of timed out transactions
-            "ResultURL": result_url, # The url that handles information from the mpesa API call
-            "Remarks": remarks,  # Comments that are sent along with the transaction(maximum 100 characters)
-            "Occassion": occassion
-        }
-        :return:
-        {
-            "OriginatorConverstionID": ,
-            "ConversationID": ,
-            "ResponseDescription: ,
-        }
+        """This method uses Mpesa's Transaction Reversal API to reverse a M-Pesa transaction.
+
+                                                            **Args:**
+                                                                - initiator (str): Username used to authenticate the transaction.
+                                                                - security_credential (str): Generate from developer portal
+                                                                - command_id (str): TransactionReversal
+                                                                - transaction_id (str): Unique identifier to identify a transaction on M-Pesa.
+                                                                - amount (int): The amount being transacted
+                                                                - receiver_party (int): Organization/MSISDN making the transaction - Shortcode (6 digits) - MSISDN (12 digits).
+                                                                - receiver_identifier_type (int): MSISDN receiving the transaction (12 digits).
+                                                                - queue_timeout_url (str): The url that handles information of timed out transactions.
+                                                                - result_url (str): The url that receives results from M-Pesa api call.
+                                                                - remarks (str): Comments that are sent along with the transaction(maximum 100 characters)
+                                                                - occassion (str):
+
+
+                                                            **Returns:**
+                                                                - OriginatorConverstionID (str): The unique request ID for tracking a transaction.
+                                                                - ConversationID (str): The unique request ID returned by mpesa for each request made
+                                                                - ResponseDescription (str): Response Description message
+
+
         """
 
         payload = {

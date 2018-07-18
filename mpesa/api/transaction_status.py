@@ -8,66 +8,35 @@ class TransactionStatus(MpesaBase):
     def __init__(self, env="sandbox", app_key=None, app_secret=None, sandbox_url=None, live_url=None):
         MpesaBase.__init__(self, env, app_key, app_secret, sandbox_url, live_url)
         self.authentication_token = self.authenticate()
-        print(self.authentication_token)
 
     def check_transaction_status(self, party_a=None, identifier_type=None, remarks=None, initiator=None, passcode=None,
                                  result_url=None, queue_timeout_url=None, transaction_id=None,
                                  occassion=None, shortcode=None):
-        """
+        """This method uses Mpesa's Transaction Status API to check the status of a transaction.
 
-        SAFARICOM PAYLOAD:
-        {
-          "CommandID": "TransactionStatusQuery",
-          "PartyA": , # Organization/MSISDN receiving the transaction - MSISDN or shortcode
-          "IdentifierType": , # Type of organization receiving the transaction 1-MSISDN. 2-Till Number, 3-Shortcode
-          "Remarks": "", # Comments that are sent along with the transaction(maximum 100 characters)
-          "Initiator": , # This is the credential/username used to authenticate the transaction request
-          "SecurityCredential": "", # Encrypted password for the initiator to authenticate the transaction request
-          "QueueTimeOutURL": queue_timeout_url, # The url that stores information of timed out transactions
-          "ResultURL": result_url,  # The url that handles information from the mpesa API call
-          "TransactionID": transaction_id, # Unique identifier to identify a transaction on M-Pesa
-          "Occasion": ""
-        }
-        RESPONSE:
-        1. LINE BUSY
-        {
-            u'ResultDesc': u'[STK_CB - ]Unable to lock subscriber, a transaction is already in process for the current subscriber',
-            u'CheckoutRequestID': u'ws_CO_17102017143731981',
-            u'ResponseDescription': u'The service request has been accepted successsfully',
-            u'MerchantRequestID': u'29126-1025953-1',
-            u'ResponseCode': u'0',
-            u'ResultCode': u'1001'
-        }
-        2. SUCCESS
-        {
-            u'ResultDesc': u'The service request is processed successfully.',
-            u'CheckoutRequestID': u'ws_CO_25102017143700816',
-            u'ResponseDescription': u'The service request has been accepted successsfully',
-            u'MerchantRequestID': u'32595-6738-1',
-            u'ResponseCode': u'0',
-            u'ResultCode': u'0'
-        }
-        3. CANCELLED BY USER
-        {
-            u'ResultDesc': u'[STK_CB - ]Request cancelled by user',
-            u'CheckoutRequestID': u'ws_CO_25102017152900284',
-            u'ResponseDescription': u'The service request has been accepted successsfully',
-            u'MerchantRequestID': u'32593-14401-1',
-            u'ResponseCode': u'0',
-            u'ResultCode': u'1032'
-        }
+            **Args:**
+                - party_a (str): Organization/MSISDN receiving the transaction - MSISDN or shortcode.
+                - identifier_type (str): Type of organization receiving the transaction 1-MSISDN. 2-Till Number, 3-Shortcode.
+                - remarks (str): Comments that are sent along with the transaction(maximum 100 characters).
+                - initiator (str): This is the credential/username used to authenticate the transaction request.
+                - passcode (str): Get from developer portal
+                - result_url (str): The url that handles information from the mpesa API call.
+                - transaction_id (str): Unique identifier to identify a transaction on M-Pesa.
+                - queue_timeout_url (str): The url that stores information of timed out transactions.
+                - result_url (str): The url that receives results from M-Pesa api call.
+                - shortcode (int): The short code of the organization.
+                - occassion (str):
 
-        4. INSUFFICIENT BALANCE
-        {
-            u'ResultDesc': u'[MpesaCB - ]The balance is insufficient for the transaction.',
-            u'CheckoutRequestID': u'ws_CO_25102017153023394',
-            u'ResponseDescription': u'The service request has been accepted successsfully',
-            u'MerchantRequestID': u'16761-2730-1',
-            u'ResponseCode': u'0',
-            u'ResultCode': u'1'
-        }
-        :return: {"email": "", "status": ""}
-        - Status can be "okay", "failed" or "unknown".
+
+            **Returns:**
+                - ResultDesc': ,
+                - CheckoutRequestID': ,
+                - ResponseDescription': ,
+                - MerchantRequestID': ,
+                - ResponseCode': ,
+                - ResultCode':
+
+
         """
 
         time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")

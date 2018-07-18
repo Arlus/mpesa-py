@@ -3,32 +3,35 @@ from .auth import MpesaBase
 
 
 class B2C(MpesaBase):
-    def __init__(self, env="sandbox", app_key=None, app_secret=None, sandbox_url=None, live_url=None):
+    def __init__(self, env="sandbox", app_key=None, app_secret=None, sandbox_url="https://sandbox.safaricom.co.ke",
+                 live_url="https://safaricom.co.ke"):
         MpesaBase.__init__(self, env, app_key, app_secret, sandbox_url, live_url)
         self.authentication_token = self.authenticate()
-        print(self.authentication_token)
 
     def transact(self, initiator_name=None, security_credential=None, command_id=None, amount=None, party_a=None, party_b=None, remarks=None,
                  queue_timeout_url=None, result_url=None, occassion=None):
-        """
-        payload = {
-            "InitiatorName": initiator_name, #The name of the initiator initiating the request
-            "SecurityCredential": security_credential, # Generate from developer portal
-            "CommandID": command_id,
-            "Amount": amount,
-            "PartyA": party_a, # Organization/MSISDN making the transaction - Shortcode (6 digits) - MSISDN (12 digits)
-            "PartyB": party_b, # MSISDN receiving the transaction (12 digits)
-            "Remarks": remarks, # Comments that are sent along with the transaction(maximum 100 characters)
-            "QueueTimeOutURL": queue_timeout_url, # The url that handles information of timed out transactions.
-            "ResultURL": result_url, # The url that receives results from M-Pesa api call.
-            "Occassion": occassion
+        """This method uses Mpesa's B2C API to transact between an M-Pesa short code to a phone number registered on M-Pesa..
 
-        :return:
-        {
-            "OriginatorConverstionID": The unique request ID for tracking a transaction
-            "ConversationID": The unique request ID returned by mpesa for each request made
-            "ResponseDescription": Response Description message
-        }
+                    **Args:**
+                        - initiator_name (str): Username used to authenticate the transaction.
+                        - security_credential (str): Generate from developer portal
+                        - command_id (str): Options: SalaryPayment, BusinessPayment, PromotionPayment
+                        - amount(str): Amount.
+                        - party_a (int): Organization/MSISDN making the transaction - Shortcode (6 digits) - MSISDN (12 digits).
+                        - party_b (int): MSISDN receiving the transaction (12 digits).
+                        - remarks (str): Comments that are sent along with the transaction(maximum 100 characters).
+                        - account_reference (str): Use if doing paybill to banks etc.
+                        - queue_timeout_url (str): The url that handles information of timed out transactions.
+                        - result_url (str): The url that receives results from M-Pesa api call.
+                        - ocassion (str):
+
+
+                    **Returns:**
+                        - OriginatorConverstionID (str): The unique request ID for tracking a transaction.
+                        - ConversationID (str): The unique request ID returned by mpesa for each request made
+                        - ResponseDescription (str): Response Description message
+
+
         """
 
         payload = {
