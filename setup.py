@@ -10,7 +10,7 @@ setuptools.setup(
     author_email="arlusishmael@gmail.com",
     description="A Python wrapper for Mpesa Daraja APIs.",
     long_description="This library provides thin wrappers around Mpesa Daraja APIs. The APIs supported are Reversal, Transaction Status, Account Balance, B2B, B2C, C2B and MPESA Express",
-    url="https://github.com/Arlus/python-mpesa",
+    url="https://github.com/Arlus/mpesa-py",
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python",
