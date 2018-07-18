@@ -131,7 +131,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'python-mpesa.tex', u'mpesa-py Documentation',
+    (master_doc, 'mpesa-py.tex', u'mpesa-py Documentation',
      u'Aurlus Ismael Wedava', 'manual'),
 ]
 
@@ -141,7 +141,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'python-mpesa', u'python-mpesa Documentation',
+    (master_doc, 'mpesa-py', u'mpesa-py Documentation',
      [author], 1)
 ]
 
