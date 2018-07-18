@@ -2,7 +2,7 @@ Metadata-Version: 1.1
 Name: mpesa-py
 Version: 0.0.1
 Summary: A Python wrapper for Mpesa Daraja APIs.
-Home-page: https://github.com/Arlus/python-mpesa
+Home-page: https://github.com/Arlus/mpesa-py
 Author: Aurlus Ismael Wedava
 Author-email: arlusishmael@gmail.com
 License: UNKNOWN
