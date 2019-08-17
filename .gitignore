@@ -1,5 +1,5 @@
 .pytest_cache
-.pyc
+*.pyc
 .idea
 docs/_build
 docs/_static

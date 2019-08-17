@@ -18,7 +18,7 @@ class C2B(MpesaBase):
 
 
                                     **Returns:**
-                                        - OriginatorConverstionID (str): The unique request ID for tracking a transaction.
+                                        - OriginatorConversationID (str): The unique request ID for tracking a transaction.
                                         - ConversationID (str): The unique request ID returned by mpesa for each request made
                                         - ResponseDescription (str): Response Description message
 
