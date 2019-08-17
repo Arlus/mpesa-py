@@ -41,14 +41,14 @@ class TransactionStatus(MpesaBase):
 
         time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")
         password = "{0}{1}{2}".format(str(shortcode), str(passcode), time)
-        encoded = base64.b64encode(password)
+        encoded = base64.b64encode(bytes(password, encoding='utf-8'))
         payload = {
             "CommandID": "TransactionStatusQuery",
             "PartyA": party_a,
             "IdentifierType": identifier_type,
             "Remarks": remarks,
             "Initiator": initiator,
-            "SecurityCredential": encoded,
+            "SecurityCredential": encoded.decode("utf-8"),
             "QueueTimeOutURL": queue_timeout_url,
             "ResultURL": result_url,
             "TransactionID": transaction_id,

@@ -34,10 +34,10 @@ class MpesaExpress(MpesaBase):
 
         time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")
         password = "{0}{1}{2}".format(str(business_shortcode), str(passcode), time)
-        encoded = base64.b64encode(password)
+        encoded = base64.b64encode(bytes(password, encoding='utf8'))
         payload = {
             "BusinessShortCode": business_shortcode,
-            "Password": encoded,
+            "Password": encoded.decode("utf-8"),
             "Timestamp": time,
             "TransactionType": "CustomerPayBillOnline",
             "Amount": amount,
@@ -78,10 +78,10 @@ class MpesaExpress(MpesaBase):
 
         time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")
         password = "{0}{1}{2}".format(str(business_shortcode), str(passcode), time)
-        encoded = base64.b64encode(password)
+        encoded = base64.b64encode(bytes(password, encoding='utf8'))
         payload = {
             "BusinessShortCode": business_shortcode,
-            "Password": encoded,
+            "Password": encoded.decode("utf-8"),
             "Timestamp": time,
             "CheckoutRequestID": checkout_request_id
         }

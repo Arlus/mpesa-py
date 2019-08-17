@@ -31,5 +31,5 @@ class MpesaExpressTests(unittest.TestCase):
                                                            description="RANDOM DESCRIPTION"
                                                            )
         print(str(self.response))
-        assert self.response.get('ResponseDescription', None) is not None
+        assert self.response.get('ResponseDescription', None) is not None or self.response.get('errorMessage', None) is not None
 
