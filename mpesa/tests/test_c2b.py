@@ -20,7 +20,7 @@ class C2BTests(unittest.TestCase):
                                                        validation_url="http://my.api/validate"
                                                        )
         print(str(self.response))
-        assert self.response.get('ResponseDescription', None) is not None
+        assert self.response.get('ResponseDescription', None) is not None or self.response.get('errorMessage', None) is not None
 
     def test_simulate(self):
         self.response = self.mpesa_c2b_object.simulate(command_id="CustomerBuyGoodsOnline",
