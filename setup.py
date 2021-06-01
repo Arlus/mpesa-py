@@ -19,6 +19,6 @@ setuptools.setup(
     ),
     install_requires=[
         'certifi', 'chardet==3.0.4', 'future==0.16.0', 'idna==2.7', 'requests==2.20.0',
-        'six==1.11.0', 'urllib3==1.24.2', 'pytest==3.6.1 '
+        'six==1.11.0', 'urllib3==1.26.5', 'pytest==3.6.1 '
     ],
 )
