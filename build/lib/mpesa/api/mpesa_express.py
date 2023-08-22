@@ -32,7 +32,7 @@ class MpesaExpress(MpesaBase):
 
         """
 
-        time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")
+        time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         password = "{0}{1}{2}".format(str(business_shortcode), str(passcode), time)
         encoded = base64.b64encode(password)
         payload = {
@@ -76,7 +76,7 @@ class MpesaExpress(MpesaBase):
 
         """
 
-        time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")
+        time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         password = "{0}{1}{2}".format(str(business_shortcode), str(passcode), time)
         encoded = base64.b64encode(password)
         payload = {
